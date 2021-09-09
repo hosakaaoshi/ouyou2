@@ -13,6 +13,17 @@
       <%= render 'form', book: @book %>
     </div>
     <div class='col-md-8 offset-md-1'>
+           <tr>
+         <%= form_tag(method: "get") do %>
+          <td><%= text_field_tag :keyword , params[:keyword],placeholder: ""%></td>
+         <% end %>
+       　<%= form_tag(method: "get") do %>
+          <td><%= select_tag "submit_name", options_for_select([["user", "user"],["book","book"]]) %></td>
+        　<td><%= select_tag "submit_name", options_for_select([["完全一致", "完全一致"],["前方一致","前方一致"],["後方一致","後方一致"],["部分一致","部分一致"]]) %></td>
+        　<td><%= submit_tag "検索" %></td>
+        　</tr>
+    　    <% end %>
+    　    <%= @submits_searched %>
       <h2>Books</h2>
       <%= render 'index', books: @books%>
 
